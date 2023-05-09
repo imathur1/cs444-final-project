@@ -119,3 +119,4 @@ dpt_swin2_tiny_targeted/
 dpt_swin2_tiny_large/
 dpt_swin2_tiny_large_targeted/
 semantic_annotations/
+depth_annotations/
