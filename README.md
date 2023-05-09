@@ -24,10 +24,9 @@ To run the adversarial attacks, you must first set up your dataset files (they'r
 Move your pretrained model weights to `MiDaS/weights/`. For each model, create an output directory as well as a targeted output directory (ie. we did `MiDaS/midas_v21_small/`, `MiDaS/midas_v21_small_targeted/`, `MiDaS/dpt_swin2_tiny/`, `MiDaS/dpt_swin2_tiny_targeted/`, `MiDaS/dpt_swin2_tiny_large/`, `MiDaS/dpt_swin2_tiny_large_targeted/`). For each output directory, create 5 subdirectories, 1 for each epsilon (ie. `MiDaS/midas_v21_small/eps_0.05/`, `MiDaS/midas_v21_small/eps_0.1/`, `MiDaS/midas_v21_small/eps_0.15/`, `MiDaS/midas_v21_small/eps_0.2/`, `MiDaS/midas_v21_small/eps_0.25/`).
 
 # Run Adversarial Attacks
-
+Run `cd MiDaS` and then `python3 run.py --model_type [MODEL] --input_path inputs/ --output_path [OUTPUT]`.
+To run a targeted adversarial attack on model `midas_v21_small_256` for example, run `python3 run.py --model_type midas_v21_small_256 --input_path inputs/ --output_path midas_v21_small_targeted/`. Running the attack takes a while, so if you want to automate
+the process you can modify the `commands` variable in `MiDaS/run_data.py` and just run `MiDaS/run_data.py`.
 
 # Evaluate Adversarial Attacks
-Run `cd suadd23-monodepth-amazon/monosuadd` and then `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/[YOUR MODEL]/eps_[YOUR EPSILON]/ -o .`. To evaluate attack `dpt_swin2_tiny_targeted` at epsilon 0.15 for example, run `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/dpt_swin2_tiny_targeted/eps_0.15/ -o .`. Make sure you have all the dependencies installed.
-
-# Visualize Adversarial Attacks
-viz
+Run `cd suadd23-monodepth-amazon/monosuadd` and then `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/[YOUR MODEL FOLDER]/eps_[YOUR EPSILON]/ -o .`. To evaluate attack `dpt_swin2_tiny_targeted` at epsilon 0.15 for example, run `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/dpt_swin2_tiny_targeted/eps_0.15/ -o .`. Make sure you have all the dependencies installed.
