@@ -17,11 +17,17 @@ It also compares the models across various metrics, such as Mean SI Log, Mean RS
 
 We ran our code in a Google Cloud VM, so `fetch_data.py` was used to transfer some files locally for visualization.
 
+# Setup Adversarial Attacks
+To run the adversarial attacks, you must first set up your dataset files (they're in `.gitignore`). Place your input images in
+`MiDaS/inputs/`. Place your depth annotations in `MiDaS/depth_annotations/`. If you want to run targeted attacks, get your semantic annotations and move them to `MiDaS/semantic_annotations/`. We found our dataset files [here](https://www.aicrowd.com/challenges/scene-understanding-for-autonomous-drone-delivery-suadd-23/problems/mono-depth-perception/dataset_files).
+
+Move your pretrained model weights to `MiDaS/weights/`. For each model, create an output directory as well as a targeted output directory (ie. we did `MiDaS/midas_v21_small/`, `MiDaS/midas_v21_small_targeted/`, `MiDaS/dpt_swin2_tiny/`, `MiDaS/dpt_swin2_tiny_targeted/`, `MiDaS/dpt_swin2_tiny_large/`, `MiDaS/dpt_swin2_tiny_large_targeted/`). For each output directory, create 5 subdirectories, 1 for each epsilon (ie. `MiDaS/midas_v21_small/eps_0.05/`, `MiDaS/midas_v21_small/eps_0.1/`, `MiDaS/midas_v21_small/eps_0.15/`, `MiDaS/midas_v21_small/eps_0.2/`, `MiDaS/midas_v21_small/eps_0.25/`).
+
 # Run Adversarial Attacks
-To run the adversarial attacks, you must first 
-In the `MiDaS` folder 
+
 
 # Evaluate Adversarial Attacks
+Run `cd suadd23-monodepth-amazon/monosuadd` and then `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/[YOUR MODEL]/eps_[YOUR EPSILON]/ -o .`. To evaluate attack `dpt_swin2_tiny_targeted` at epsilon 0.15 for example, run `python3 evaluate.py -gt ../../MiDaS/depth_annotations/ -pred ../../MiDaS/dpt_swin2_tiny_targeted/eps_0.15/ -o .`. Make sure you have all the dependencies installed.
 
 # Visualize Adversarial Attacks
 viz
